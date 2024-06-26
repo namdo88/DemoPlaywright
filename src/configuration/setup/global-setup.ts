@@ -1,26 +1,26 @@
 import { Browser, Page, chromium } from "@playwright/test";
 import { PageManager } from "../../pages/PageManager.ts";
 import test, {expect} from '../../base/fixtures.ts';
-import Constants from '../../base/Constants.ts';
+import TestConfig from '../../base/test-config.ts';
 import dotenv from "dotenv";
 
 dotenv.config({
-    path: `./.env.${Constants.TEST_ENV}`,
+    path: `./.env.${TestConfig.TEST_ENV}`,
     override: true
 });
 
 test('Setup chromium', async ({ pageManager, page }) => { 
     console.log("-------------------------Chromium setup test--------------------------");
 
-    console.log(Constants.BASE_URL);
-    console.log(Constants.USERNAME);
-    console.log(Constants.PASSWORD);
+    console.log(TestConfig.BASE_URL);
+    console.log(TestConfig.USERNAME);
+    console.log(TestConfig.PASSWORD);
 
     // const pageManager = new PageManager(page);
     await page.context().tracing.start({screenshots: true, snapshots: true});
 
-    await pageManager.getCommonPage().navigate(Constants.BASE_URL);
-    await pageManager.getLoginPage().login(Constants.USERNAME, Constants.PASSWORD)
+    await pageManager.getCommonPage().navigate(TestConfig.BASE_URL);
+    await pageManager.getLoginPage().login(TestConfig.USERNAME, TestConfig.PASSWORD)
     await pageManager.getHomePage().verifyHomePageTitle("Dashboard");
     await page.context().storageState({path: "./login-state.json"})
     await page.context().tracing.stop({
