@@ -1,12 +1,10 @@
 import { expect } from '@playwright/test';
 import { CommonPage } from './common.page';
-import fs from 'fs';
-import path from 'path';
+
 
 export class LoginPage extends CommonPage{
 
   // readonly page: Page;
-  private static instance: LoginPage;
   readonly usernameInput = "[name='username']";
   readonly passwordInput = "[name='password']";
   readonly loginButton = "button[type='submit']";

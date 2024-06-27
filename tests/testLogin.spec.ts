@@ -4,6 +4,7 @@ import { BasePage } from '../src/base/basePage.ts';
 import { CommonPage } from '../src/pages/common.page.ts';
 import test, {expect} from '../src/base/fixtures.ts';
 import path from 'path';
+import { Utils } from '../src/utils/utils.ts';
 
 
 
@@ -48,7 +49,7 @@ test.describe('Login', () => {
       await pageManager.getLoginPage().clickLoginButton()
     })
     await test.step('Verify login error', async () => {
-      await pageManager.getLoginPage().verifyErrorMessage(await pageManager.getCommonPage().loadTestData("login", "errorMessage"))
+      await pageManager.getLoginPage().verifyErrorMessage(await Utils.loadTestData("login", "errorMessage"))
     })
     await test.step('Verify login success', async () => {
       // await expect(page).toHaveURL("https://www.saucedemo.com/v1/inventory.html")

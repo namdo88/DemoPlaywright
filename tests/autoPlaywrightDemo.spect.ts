@@ -2,6 +2,10 @@ import { test, expect } from '@playwright/test';
 import { auto } from "auto-playwright";
 
 test("executes query, action and assertion", async ({page}) => {
+    
+    // const options = {
+
+    // };
 
     // Navigate to a website
     await page.goto("https://www.saucedemo.com/v1/");
