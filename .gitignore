@@ -4,4 +4,4 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /.env.local
-/login-state.jsongit 
+/login-state.json
